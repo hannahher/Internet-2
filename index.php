@@ -1,37 +1,46 @@
 
-<?php
-include("config.ini");
-$text = urldecode($_REQUEST['Essen']) ."   " .urldecode($_REQUEST['Freizeitbeschäftigung']) ."   " .urldecode($_REQUEST['Programm']) ."\n";
-file_put_contents("test.txt", $text, FILE_APPEND);
-
-
-?>
-<!DOCTYPE HTML>
-<html> 
-<body>
-
-<?php
-include('nav.inc');
-?>
-
-<?php 
-
-// Falls der Name nicht übertragen wurde... 
+	<?php
+	include("config.inc");
+	$text = urldecode($_REQUEST['Süßigkeiten']) ."   " .urldecode($_REQUEST['Freizeitbeschäftigung']) ."   " .urldecode($_REQUEST['Programm']) ."\n";
+	file_put_contents("test.txt", $text, FILE_APPEND);
+	
+	
+	?>
+	<!DOCTYPE HTML>
+	<html> 
+	<body>
+	
+	<?php
+	include('nav.inc');
+	?>
+	
+	<?php 
+	
 	if (empty($_POST['name'])){
-	// anonyme Begrüßung
-	echo "Guten Tag!"; 
+		echo $_POST['tageszeit'] ."! <br>" ;
 	}
-// Falls ein Name übertragen wurde 
 	else {
-	echo $_POST['Tageszeit']; }
-?>
+		echo $_POST['tageszeit'] .", " .$_POST['name'] ."! <br>"; 
+	}
+	// Falls der Name nicht übertragen wurde... 
+		if (empty($_POST['mail'])){
+		// anonyme Begrüßung
+		echo "Es wurde leider keine E-Mail angegeben!"; 
+		}
+	// Falls ein Name übertragen wurde 
+		else {
+		 echo "Vielen Dank für ihre Mailadresse."; 
+		}
 
-<br><br><br><br><br><br>
-
-
-
-<?php
-include ('footer.inc');
-?>
-</body> 
-</html>
+	echo " <br>" ."I say Yes to..." ." " .$text
+	?>
+	
+	<br><br><br><br><br><br>
+	
+	
+	
+	<?php
+	include ('footer.inc');
+	?>
+	</body> 
+	</html>
